@@ -1,0 +1,277 @@
+@import "bourbon"
+@import "vars.sass"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
++font-face("OpenSansLight", "../fonts/OpenSansLight/OpenSansLight", $file-formats: eot woff ttf)
++font-face("OpenSansBold", "../fonts/OpenSansBold/OpenSansBold", $file-formats: eot woff ttf)
++font-face("OpenSansRegular", "../fonts/OpenSansRegular/OpenSansRegular", $file-formats: eot woff ttf)
+
+body
+	font-size: 14px
+	min-width: 320px
+	position: relative
+	line-height: 1.6
+	font-family: $regular, sans-serif
+	overflow-x: hidden
+	background-color: #f7f7f7
+
+h1,h2,h3,h4
+	font-family: $bold
+
+.clrp
+	padding: 0
+a
+	&:hover
+		text-decoration: none
+
+.hidden
+	display: none
+
+button, input
+	outline: none
+	border: none
+
+ul
+	padding: 0
+	margin: 0
+	list-style-type: none
+
+.main-container
+	font-size: 0
+	>div
+		font-size: 16px
+		display: inline-block
+		vertical-align: top
+	.content
+		width: calc(100% - 230px)
+	
+.main-menu 
+	width: 230px
+	padding-top: 15px
+	padding-bottom: 15px
+	background-color: $menuBg
+	color: $white	
+	// overflow-y: auto
+	transition: width 0.4s
+	position: relative
+	.toggle-menu
+		background: none
+		// margin-top: 13px
+		position: absolute
+		top: 13px
+		right: -65px
+		i
+			color: $menuBg
+			display: inline-block
+			vertical-align: middle
+			&:first-child
+				margin-top: 3px
+				margin-right: -5px
+				font-size: 22px
+			&:last-child
+				font-size: 30px				
+	&::-webkit-scrollbar
+		width: 9px
+	&::-webkit-scrollbar-track 
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+		border-radius: 10px
+	&::-webkit-scrollbar-thumb 
+		border-radius: 10px
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8)
+	&.active
+		width: 60px
+	.main-logo 
+		text-align: center
+		margin-bottom: 25px
+		.icon-fuel-logo
+			font-size: 35px
+			margin-right: 5px
+		.company-name
+			font-size: 22px
+			line-height: 35px
+			vertical-align: top
+			font-weight: 600
+			letter-spacing: 2px
+		sup
+			vertical-align: text-top
+	ul 
+		-webkit-transition: all .3s
+		-o-transition: all .3s
+		transition: all .3s
+		li 
+			list-style-type: none
+			line-height: 37px
+			position: relative
+			transition: all 0.4s
+			&.selected
+				background-color: $red				
+			.sub-menu 
+				background-color: $subMenuBg
+				color: $subMenuColor
+				position: relative
+				overflow: hidden
+				// transition: all 0.3s
+				height: 0
+				&:after 
+					content: ''
+					position: absolute
+					left: 22px
+					height: calc(100% - 18px)
+					height: -webkit-calc(100% - 18px)
+					height: -moz-calc(100% - 18px)
+					width: 1px
+					background: $subMenuDot
+					top: 10px					
+				li 
+					padding-left: 43px					
+					opacity: 0
+					&:hover 
+						background-color: $subMenuHover
+					&:before 
+						content: ''
+						position: absolute
+						top: 15px
+						left: 19px
+						height: 7px
+						width: 7px
+						border-radius: 50%
+						background: $subMenuDot
+					&:first-child:after 
+						height: 80%
+						bottom: 0
+					&:last-child:after 
+						height: 80%
+						top: 0
+					&:nth-child(2)
+						margin-left: 3px
+					&:nth-child(3)
+						margin-left: 6px
+					&:nth-child(4)
+						margin-left: 9px
+					&:nth-child(5)
+						margin-left: 12px
+					&:nth-child(6)
+						margin-left: 15px
+					&:nth-child(7)
+						margin-left: 18px
+					&:nth-child(8)
+						margin-left: 21px
+					&:nth-child(9)
+						margin-left: 24px
+				&.selected
+					height: auto				
+					li						
+						opacity: 1
+						margin-left: 0px!important
+						transition: all 0.4s						
+						&:nth-child(2)
+							transition-delay: 0.1s
+						&:nth-child(3)
+							transition-delay: 0.2s
+						&:nth-child(4)
+							transition-delay: 0.3s
+						&:nth-child(5)
+							transition-delay: 0.4s
+						&:nth-child(6)
+							transition-delay: 0.5s
+						&:nth-child(7)
+							transition-delay: 0.6s
+						&:nth-child(8)
+							transition-delay: 0.7s
+						&:nth-child(9)
+							transition-delay: 0.8s
+
+				
+			&.menu-item
+				transition: background-color 0.3s
+				&:hover 
+					background-color: $red
+					cursor: pointer	
+				i 
+					margin-right: 10px
+					margin-left: 15px
+					font-size: 16px
+				span 
+					position: absolute
+					right: 10px
+					top: 0px
+					width: 10px
+					height: 37px
+					&:before
+						transition: transform 0.3s
+						position: absolute
+						content: '\eaeb'
+						top: 10px
+						right: 0
+				&.selected
+					span						
+						&:before
+							transform: rotate(90deg)	
+
+								
+								
+					
+
+
+
+//Topbar
+.topbar
+	min-height: 60px
+	background-color: $siginBg
+	box-shadow: 0 1px 2px #999
+	
+
+//Dropdown box
+
+.dropdown-box
+	margin-top: 20px
+	padding: 5px 15px
+	background-color: $white
+	border: 1px solid $silver
+	color: $menuBg
+	.dropdown-header
+		position: relative
+		padding: 0 10px
+		line-height: 45px
+		font-size: 18px
+		font-weight: 600
+		border-bottom: 2px solid $silver
+		span
+			position: absolute
+			top: 8px
+			right: 0
+			font-size: 30px
+			&:hover
+				cursor: pointer
+	.drop-item
+		position: relative
+		padding: 0 10px
+		font-size: 13px
+		line-height: 45px
+		border-bottom: 1px solid $silver
+		&:last-child
+			border-bottom: none
+		span
+			position: absolute
+			right: 10px
+
+
+
+
+
+
+@import "media"

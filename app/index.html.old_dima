@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="flApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>FuelTrack AngularJS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav ng-controller="SideMenuCtrl">
+    <ul>
+      <li ng-repeat="menuItem in menuItems">
+        <span>{{ menuItem.name }}
+      </li>
+    </ul>
+  </nav>
+
+  <div ng-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="components/sidemenu/controller.js"></script>
+</body>
+
+</html>

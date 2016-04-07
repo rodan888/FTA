@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='MyApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>FTA</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" href="libs/icon-moon/icon-css.css">
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid-3.3.1.min.css">
+	<link rel="stylesheet" href="css/main.min.css">
+
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular/angular-route.min.js"></script>
+	<script src="libs/jQuery/jquery-2.2.0.min.js"></script>
+	<script src="app.js"></script>	
+	<script src="components/directive/dropdown.js"></script>
+</head>
+
+<body>
+	<div class="main-container">
+		
+		<!-- Sidemenu start -->
+		<div class="side-menu" data-ng-controller="sideMenuCtrl">
+			<nav class="main-menu" ng-class="{'active': isActive}" data-ng-style="{height: innerHeight + 'px'}" dropdown>
+				<div class="main-logo">
+					<span class="icon icon-fuel-logo"></span>
+					<span class="company-name">FUELTRACK </span>
+					<sup>&#174;</sup>
+				</div>
+				<ul class="dropdown-container" > 
+					<li class="menu-item" data-ng-class="getClass($index)" data-ng-repeat="menu in viewModel" data-ng-click="toggleSelect($index)" >
+						<i class=" {{menu.icon}} "></i> {{menu.name}}
+						<span class="icon"></span>
+
+						<ul class="sub-menu drop-down" data-ng-class="getClass($index)">
+							<li class="sub-items" data-ng-repeat="submenu in menu.submenu">
+								{{submenu.name}} <br>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<button class="toggle-menu" ng-click="activeButton(); toggleSelect($index)" type="button"><i class="icon icon-previous2"></i><i class="icon icon-menu"></i></button> 
+			</nav>
+		</div>
+		<!-- Sidemenu end -->
+
+
+		<div class="content">
+
+			<!-- Topbar start -->
+			<div class="topbar">
+				
+			</div>
+			<!-- Topbar end -->
+
+			<div class="container-fluid">
+				<div class="row ">
+					<div class="col-md-5">
+
+						<div class="dropdown-box">
+							<div class="dropdown-header">
+								Přehled jednotek
+								<span class="icon icon-up"></span>
+							</div>
+							<div class="drop-item">
+								Počet registrovaných jednotek <span>8</span>
+							</div>
+							<div class="drop-item">
+								Počet registrovaných vozidel <span>8</span>
+							</div>
+						</div>
+						
+						<!-- Last changes box -->
+							<div class="dropdown-box">
+								<div class="dropdown-header">Poslední výstrahy
+									<span class="icon icon-up"></span>
+								</div>
+								<div class="pagination">
+									<span class="icon icon-previous2"></span>
+									<span class="active-num">10</span>
+									<span class="next-num">20</span>
+									<span class="icon icon-next2"></span>
+								</div>
+									<div class="drop-item">VW Crafter (5C3 8597 benkalor)</div>
+									<div class="drop-item">VW Crafter (5C3 8597 benkalor)</div>
+									<div class="drop-item">HAMM DV90VO (H1920277)</div>
+									<div class="drop-item">VW Crafter (5C3 8597 benkalor)</div>
+									<div class="drop-item">HAMM DV90VO (H1920277)</div>
+							</div>
+
+					</div>
+					<div class="col-md-7">
+
+						<!-- Date & IP  -->
+						<div class="dropdown-box" data-ng-controller="getDateCtrl">
+							<div class="dropdown-header">
+								Údaje o posledním přihlášení
+								<span class="icon icon-up"></span>
+							</div>
+							<div class="drop-item">
+								Dne <span > {{ getDate | date:'yyyy. MM. dd' }} </span>
+							</div>
+							<div class="drop-item">
+								Údaje o posledním přihlášení <span> {{ip}} </span>
+							</div>
+						</div>
+
+						<!-- Map box -->
+						<div class="dropdown-box">
+							<div class="dropdown-header">Přehled vozidel
+								<span class="icon icon-up"></span></div>
+								<div class="map">							
+								</div>
+							</div>
+
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>  
+
+
+</body>
+</html>
