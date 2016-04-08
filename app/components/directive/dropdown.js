@@ -8,7 +8,7 @@ app.directive("dropdown", function() {
     link: function(scope) {
       scope.selectedIndex = -1,
       scope.innerHeight = window.innerHeight, 
-      scope.isActive = false,                
+      // scope.isActive = false,                
       scope.toggleSelect = function(ind){              
         if( ind === scope.selectedIndex ){
           scope.selectedIndex = -1;
@@ -24,8 +24,19 @@ app.directive("dropdown", function() {
         }
       },      
       scope.activeButton = function() {
-        scope.isActive = !scope.isActive;
+        scope.classFactory.active = !scope.classFactory.active;
       }  
     }
   }
 });  
+
+app.directive('btnMenu', function() {
+  return{
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'components/templates/menu-button.html'
+      // link: function($scope){
+
+      // }
+    }
+});

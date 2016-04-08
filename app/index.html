@@ -15,7 +15,9 @@
 	<script src="libs/angular/angular-route.min.js"></script>
 	<script src="libs/jQuery/jquery-2.2.0.min.js"></script>
 	<script src="app.js"></script>	
+
 	<script src="components/directive/dropdown.js"></script>
+	<script src="components/factory/factory.js"></script>
 </head>
 
 <body>
@@ -23,12 +25,12 @@
 		
 		<!-- Sidemenu start -->
 		<div class="side-menu" data-ng-controller="sideMenuCtrl">
-			<nav class="main-menu" ng-class="{'active': isActive}" data-ng-style="{height: innerHeight + 'px'}" dropdown>
-				<div class="main-logo">
+			<nav class="main-menu"  data-ng-class="{'active': classFactory.active}" data-ng-style="{height: innerHeight + 'px'}" dropdown>
+				<div class="main-logo">				
 					<span class="icon icon-fuel-logo"></span>
 					<span class="company-name">FUELTRACK </span>
 					<sup>&#174;</sup>
-				</div>
+				</div>		
 				<ul class="dropdown-container" > 
 					<li class="menu-item" data-ng-class="getClass($index)" data-ng-repeat="menu in viewModel" data-ng-click="toggleSelect($index)" >
 						<i class=" {{menu.icon}} "></i> {{menu.name}}
@@ -41,17 +43,16 @@
 						</ul>
 					</li>
 				</ul>
-				<button class="toggle-menu" ng-click="activeButton(); toggleSelect($index)" type="button"><i class="icon icon-previous2"></i><i class="icon icon-menu"></i></button> 
+				<btn-menu></btn-menu>
 			</nav>
 		</div>
 		<!-- Sidemenu end -->
 
 
-		<div class="content">
-
+		<div class="content" data-ng-class="{'open' : classFactory.active}" data-ng-controller="homePageCtrl">
 			<!-- Topbar start -->
 			<div class="topbar">
-				
+
 			</div>
 			<!-- Topbar end -->
 
@@ -94,13 +95,13 @@
 					<div class="col-md-7">
 
 						<!-- Date & IP  -->
-						<div class="dropdown-box" data-ng-controller="getDateCtrl">
+						<div class="dropdown-box">
 							<div class="dropdown-header">
 								Údaje o posledním přihlášení
 								<span class="icon icon-up"></span>
 							</div>
 							<div class="drop-item">
-								Dne <span > {{ getDate | date:'yyyy. MM. dd' }} </span>
+								Dne <span > {{ dateFactory.date | date:'yyyy. MM. dd' }} </span>
 							</div>
 							<div class="drop-item">
 								Údaje o posledním přihlášení <span> {{ip}} </span>
